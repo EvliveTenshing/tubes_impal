@@ -9,9 +9,15 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.UIManager;
+import sistem_rental_mobil_oo_impal.model.Pegawai;
+import sistem_rental_mobil_oo_impal.model.Penyewa;
+import sistem_rental_mobil_oo_impal.model.Supplier;
+import sistem_rental_mobil_oo_impal.panels.Dashboard;
+import sistem_rental_mobil_oo_impal.panels.LihatMobil;
 import sistem_rental_mobil_oo_impal.panels.ManageMobil;
 import sistem_rental_mobil_oo_impal.panels.PermintaanMobil;
 import sistem_rental_mobil_oo_impal.panels.Profile;
+import sistem_rental_mobil_oo_impal.panels.SewaMobil;
 
 /**
  *
@@ -21,8 +27,9 @@ public class PenyewaInterface extends javax.swing.JFrame {
     Driver driver;
     GridBagLayout layout = new GridBagLayout();
     Profile profile;
-    ManageMobil manageMobil;
-    PermintaanMobil permintaanMobil;
+    LihatMobil lihatMobil;
+    Dashboard dashboard;
+    SewaMobil sewaMobil;
     
     /**
      * Creates new form Supplier
@@ -33,31 +40,42 @@ public class PenyewaInterface extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         driver = new Driver();
         
-        profile = new Profile();
+        dashboard = new Dashboard();
         DynamicPane.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
         c.gridx = 0;
         c.gridy = 0;
+        DynamicPane.add(dashboard, c);
+        
+        profile = new Profile();
+        DynamicPane.setLayout(layout);
+        c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.gridx = 0;
+        c.gridy = 0;
         DynamicPane.add(profile, c);
         
-        manageMobil = new ManageMobil();
+        lihatMobil = new LihatMobil();
+        DynamicPane.setLayout(layout);
         c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
         c.gridx = 0;
         c.gridy = 0;
-        DynamicPane.add(manageMobil, c);
+        DynamicPane.add(lihatMobil, c);
         
-        permintaanMobil = new PermintaanMobil();
+        sewaMobil = new SewaMobil();
+        DynamicPane.setLayout(layout);
         c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
         c.gridx = 0;
         c.gridy = 0;
-        DynamicPane.add(permintaanMobil, c);
+        DynamicPane.add(sewaMobil, c);
         
-        profile.setVisible(true);
-        manageMobil.setVisible(false);
-        permintaanMobil.setVisible(false);
+        dashboard.setVisible(true);
+        profile.setVisible(false);
+        lihatMobil.setVisible(false);
+        sewaMobil.setVisible(false);
     }
     
     /**
@@ -201,21 +219,51 @@ public class PenyewaInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void myProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myProfileButtonActionPerformed
+        if ("pegawai".equals(driver.getUserLevel())) {
+            Pegawai pegawai = driver.getPegawaiByEmail(driver.getUserEmail());
+            driver.setUserNama(pegawai.getNama());
+            driver.setUserAlamat(pegawai.getAlamat());
+            driver.setUserContact(pegawai.getContact());
+        } else if ("supplier".equals(driver.getUserLevel())) {
+            Supplier supplier = driver.getSupplierByEmail(driver.getUserEmail());
+            driver.setUserNama(supplier.getNama());
+            driver.setUserAlamat(supplier.getAlamat());
+            driver.setUserContact(supplier.getContact());
+        } else if ("penyewa".equals(driver.getUserLevel())) {
+            Penyewa penyewa = driver.getPenyewaByEmail(driver.getUserEmail());
+            driver.setUserNama(penyewa.getNama());
+            driver.setUserAlamat(penyewa.getAlamat());
+            driver.setUserContact(penyewa.getContact());
+        }
+        profile.getDriver().setUserEmail(driver.getUserEmail());
+        profile.getDriver().setUserNama(driver.getUserNama());
+        profile.getDriver().setUserContact(driver.getUserContact());
+        profile.getDriver().setUserLevel(driver.getUserLevel());
+        profile.getDriver().setUserAlamat(driver.getUserAlamat());
+        profile.setEmail(driver.getUserEmail());
+        profile.setNama(driver.getUserNama());
+        profile.setAlamat(driver.getUserAlamat());
+        profile.setContact(driver.getUserContact());
+        profile.setLevel(driver.getUserLevel());
         profile.setVisible(true);
-        manageMobil.setVisible(false);
-        permintaanMobil.setVisible(false);
+        dashboard.setVisible(false);
+        lihatMobil.setVisible(false);
+        sewaMobil.setVisible(false);
     }//GEN-LAST:event_myProfileButtonActionPerformed
 
     private void lihatMobilButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lihatMobilButtonActionPerformed
+        lihatMobil.loadMobil();
         profile.setVisible(false);
-        manageMobil.setVisible(false);
-        permintaanMobil.setVisible(true);
+        dashboard.setVisible(false);
+        lihatMobil.setVisible(true);
+        sewaMobil.setVisible(false);
     }//GEN-LAST:event_lihatMobilButtonActionPerformed
 
     private void sewaMobilButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sewaMobilButtonActionPerformed
         profile.setVisible(false);
-        manageMobil.setVisible(true);
-        permintaanMobil.setVisible(false);
+        dashboard.setVisible(false);
+        lihatMobil.setVisible(false);
+        sewaMobil.setVisible(true);
     }//GEN-LAST:event_sewaMobilButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed

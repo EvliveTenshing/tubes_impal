@@ -53,7 +53,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="myProfileButton" alignment="0" max="32767" attributes="0"/>
               <Component id="manageTransaksiButton" alignment="0" max="32767" attributes="0"/>
-              <Component id="managaMobilButton" alignment="0" max="32767" attributes="0"/>
+              <Component id="manageMobilButton" alignment="0" max="32767" attributes="0"/>
               <Component id="logoutButton" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="35" max="32767" attributes="0"/>
@@ -83,7 +83,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="manageTransaksiButton" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="managaMobilButton" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="manageMobilButton" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lihatPenyewaButton" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -145,7 +145,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageTransaksiButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="managaMobilButton">
+        <Component class="javax.swing.JButton" name="manageMobilButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="66" red="0" type="rgb"/>
@@ -162,7 +162,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="managaMobilButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageMobilButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="logoutButton">

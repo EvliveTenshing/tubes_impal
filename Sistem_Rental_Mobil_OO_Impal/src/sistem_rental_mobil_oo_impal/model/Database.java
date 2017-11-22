@@ -205,7 +205,7 @@ public class Database {
             ResultSet result = statement.executeQuery(s);
             while (result.next()) {
                 Transaksi transaksi = new Transaksi(result.getInt("id_transaksi"), result.getInt("id_user"), result.getInt("id_mobil"), result.getString("nama_mobil_yang_disewa"), 
-                        result.getInt("jumlah_mobil_yang_disewa"), result.getInt("harga_sewa"), result.getDate("tanggal_pengembalian"), result.getInt("denda"));
+                        result.getInt("jumlah_mobil_yang_disewa"), result.getInt("harga_sewa"), result.getDate("tanggal_pengembalian"), result.getInt("denda"), result.getInt("status_bayar"));
                 transaksiList.add(transaksi);
             }
             return transaksiList;

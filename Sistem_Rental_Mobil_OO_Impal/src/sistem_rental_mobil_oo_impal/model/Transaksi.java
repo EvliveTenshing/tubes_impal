@@ -21,8 +21,9 @@ public class Transaksi {
     private int harga;
     private Date tanggalPengembalian;
     private int denda;
+    private int statusBayar;
 
-    public Transaksi(int id, int idPenyewa, int idMobil, String namaMobil, int jumlahMobil, int harga, Date tanggalPengembalian, int denda) {
+    public Transaksi(int id, int idPenyewa, int idMobil, String namaMobil, int jumlahMobil, int harga, Date tanggalPengembalian, int denda, int statusBayar) {
         this.id = id;
         this.idPenyewa = idPenyewa;
         this.idMobil = idMobil;
@@ -31,16 +32,18 @@ public class Transaksi {
         this.harga = harga;
         this.tanggalPengembalian = tanggalPengembalian;
         this.denda = denda;
+        this.statusBayar = statusBayar;
     }
     
-    public Transaksi(int id, int idPenyewa, int idMobil, String namaMobil, int jumlahMobil, int harga, Date tanggalPengembalian) {
-        this.id = id;
+    public Transaksi(int idPenyewa, int idMobil, String namaMobil, int jumlahMobil, int harga, Date tanggalPengembalian) {
         this.idPenyewa = idPenyewa;
         this.idMobil = idMobil;
         this.namaMobil = namaMobil;
         this.jumlahMobil = jumlahMobil;
         this.harga = harga;
         this.tanggalPengembalian = tanggalPengembalian;
+        this.denda = 0;
+        this.statusBayar = 0;
     }
 
     public Transaksi() {}
@@ -108,5 +111,12 @@ public class Transaksi {
     public void setDenda(int denda) {
         this.denda = denda;
     }
-    
+
+    public int getStatusBayar() {
+        return statusBayar;
+    }
+
+    public void setStatusBayar(int statusBayar) {
+        this.statusBayar = statusBayar;
+    }
 }

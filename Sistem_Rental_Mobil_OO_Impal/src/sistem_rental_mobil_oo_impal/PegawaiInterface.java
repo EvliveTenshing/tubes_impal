@@ -13,6 +13,8 @@ import sistem_rental_mobil_oo_impal.model.Pegawai;
 import sistem_rental_mobil_oo_impal.model.Penyewa;
 import sistem_rental_mobil_oo_impal.model.Supplier;
 import sistem_rental_mobil_oo_impal.panels.Dashboard;
+import sistem_rental_mobil_oo_impal.panels.LihatPenyewa;
+import sistem_rental_mobil_oo_impal.panels.LihatSupplier;
 import sistem_rental_mobil_oo_impal.panels.ManageMobil;
 import sistem_rental_mobil_oo_impal.panels.PermintaanMobil;
 import sistem_rental_mobil_oo_impal.panels.Profile;
@@ -27,6 +29,8 @@ public class PegawaiInterface extends javax.swing.JFrame {
     Profile profile;
     ManageMobil manageMobil;
     Dashboard dashboard;
+    LihatPenyewa lihatPenyewa;
+    LihatSupplier lihatSupplier;
     
     /**
      * Creates new form Supplier
@@ -59,9 +63,16 @@ public class PegawaiInterface extends javax.swing.JFrame {
         c.gridy = 0;
         DynamicPane.add(manageMobil, c);
         
+        lihatPenyewa = new LihatPenyewa();
+        c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        DynamicPane.add(lihatPenyewa, c);
+        
         dashboard.setVisible(true);
         profile.setVisible(false);
         manageMobil.setVisible(false);
+        lihatPenyewa.setVisible(false);
     }
     
     /**
@@ -77,7 +88,7 @@ public class PegawaiInterface extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         myProfileButton = new javax.swing.JButton();
         manageTransaksiButton = new javax.swing.JButton();
-        managaMobilButton = new javax.swing.JButton();
+        manageMobilButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         lihatPenyewaButton = new javax.swing.JButton();
@@ -114,14 +125,14 @@ public class PegawaiInterface extends javax.swing.JFrame {
             }
         });
 
-        managaMobilButton.setBackground(new java.awt.Color(0, 102, 255));
-        managaMobilButton.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        managaMobilButton.setForeground(new java.awt.Color(255, 255, 255));
-        managaMobilButton.setText("Manage Mobil");
-        managaMobilButton.setBorder(null);
-        managaMobilButton.addActionListener(new java.awt.event.ActionListener() {
+        manageMobilButton.setBackground(new java.awt.Color(0, 102, 255));
+        manageMobilButton.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        manageMobilButton.setForeground(new java.awt.Color(255, 255, 255));
+        manageMobilButton.setText("Manage Mobil");
+        manageMobilButton.setBorder(null);
+        manageMobilButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                managaMobilButtonActionPerformed(evt);
+                manageMobilButtonActionPerformed(evt);
             }
         });
 
@@ -180,7 +191,7 @@ public class PegawaiInterface extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(myProfileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(manageTransaksiButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(managaMobilButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(manageMobilButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(35, Short.MAX_VALUE)
@@ -206,7 +217,7 @@ public class PegawaiInterface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(manageTransaksiButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(managaMobilButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manageMobilButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lihatPenyewaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -279,13 +290,15 @@ public class PegawaiInterface extends javax.swing.JFrame {
         profile.setVisible(true);
         dashboard.setVisible(false);
         manageMobil.setVisible(false);
+        lihatPenyewa.setVisible(false);
+        lihatSupplier.setVisible(false);        
     }//GEN-LAST:event_myProfileButtonActionPerformed
 
     private void manageTransaksiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageTransaksiButtonActionPerformed
 
     }//GEN-LAST:event_manageTransaksiButtonActionPerformed
 
-    private void managaMobilButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managaMobilButtonActionPerformed
+    private void manageMobilButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageMobilButtonActionPerformed
         manageMobil.deleteListInTable();
         manageMobil.getDriver().setUserEmail(driver.getUserEmail());
         manageMobil.getDriver().setUserNama(driver.getUserNama());
@@ -294,7 +307,9 @@ public class PegawaiInterface extends javax.swing.JFrame {
         profile.setVisible(false);
         dashboard.setVisible(false);        
         manageMobil.setVisible(true);
-    }//GEN-LAST:event_managaMobilButtonActionPerformed
+        lihatPenyewa.setVisible(false);
+        lihatSupplier.setVisible(false);
+    }//GEN-LAST:event_manageMobilButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         this.dispose();
@@ -302,11 +317,21 @@ public class PegawaiInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void lihatPenyewaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lihatPenyewaButtonActionPerformed
-        // TODO add your handling code here:
+        lihatPenyewa.loadPenyewa();
+        profile.setVisible(false);
+        dashboard.setVisible(false);        
+        manageMobil.setVisible(false);
+        lihatPenyewa.setVisible(true);
+        lihatSupplier.setVisible(false);
     }//GEN-LAST:event_lihatPenyewaButtonActionPerformed
 
     private void lihatSupplierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lihatSupplierButtonActionPerformed
-        // TODO add your handling code here:
+        lihatSupplier.loadSupplier();
+        profile.setVisible(false);
+        dashboard.setVisible(false);        
+        manageMobil.setVisible(false);
+        lihatPenyewa.setVisible(false);
+        lihatSupplier.setVisible(true);
     }//GEN-LAST:event_lihatSupplierButtonActionPerformed
 
     private void lihatLaporanRekeningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lihatLaporanRekeningActionPerformed
@@ -345,7 +370,7 @@ public class PegawaiInterface extends javax.swing.JFrame {
     private javax.swing.JButton lihatPenyewaButton;
     private javax.swing.JButton lihatSupplierButton;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JButton managaMobilButton;
+    private javax.swing.JButton manageMobilButton;
     private javax.swing.JButton manageTransaksiButton;
     private javax.swing.JButton myProfileButton;
     // End of variables declaration//GEN-END:variables
