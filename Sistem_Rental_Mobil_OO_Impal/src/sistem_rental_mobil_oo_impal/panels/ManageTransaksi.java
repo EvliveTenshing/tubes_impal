@@ -146,11 +146,9 @@ public class ManageTransaksi extends javax.swing.JPanel {
             Transaksi transaksi = getTransaksi(selectedRow); //ambil transaksi dari database
             Penyewa penyewa = driver.getPenyewaById(transaksi.getIdPenyewa()); //ambil penyewa dari database
             Mobil mobil = driver.getMobilById(transaksi.getIdMobil()); //ambil mobil dari database
-            penyewa.setIdTransaksiPenyewa(-1);
             mobil.setJumlah(mobil.getJumlah()+transaksi.getJumlahMobil());
-            driver.getDb().updatePenyewa(penyewa.getId(), penyewa);
-            driver.getDb().updateMobil(mobil.getId(), mobil);
             driver.getDb().deleteTransaksi(transaksi.getId());
+            driver.getDb().updateMobil(mobil.getId(), mobil);
         }
         loadTransaksi(); 
     }//GEN-LAST:event_deleteTransaksiButtonActionPerformed

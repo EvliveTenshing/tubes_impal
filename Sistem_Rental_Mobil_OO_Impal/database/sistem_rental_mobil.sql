@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2017 at 06:05 PM
+-- Generation Time: Nov 29, 2017 at 06:28 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -257,14 +257,14 @@ ALTER TABLE `mobil`
 -- Constraints for table `penyewa`
 --
 ALTER TABLE `penyewa`
-  ADD CONSTRAINT `penyewa_ibfk_1` FOREIGN KEY (`id_transaksi_penyewa`) REFERENCES `transaksi` (`id_transaksi`);
+  ADD CONSTRAINT `penyewa_ibfk_1` FOREIGN KEY (`id_transaksi_penyewa`) REFERENCES `transaksi` (`id_transaksi`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Constraints for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_penyewa`) REFERENCES `penyewa` (`id_penyewa`),
-  ADD CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`id_mobil`) REFERENCES `mobil` (`id_mobil`);
+  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_penyewa`) REFERENCES `penyewa` (`id_penyewa`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`id_mobil`) REFERENCES `mobil` (`id_mobil`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
