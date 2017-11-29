@@ -280,7 +280,19 @@ public class Driver {
         return supplier;
     }
     
-    public Mobil getMobil(String namaSupplier, String namaMobil, String namaMerk) {
+    public Penyewa getPenyewaByNama(String namaPenyewa) {
+        reloadData();
+        Penyewa penyewa = new Penyewa();
+        penyewa.setNama("");
+        for (Penyewa p : listPenyewa) {
+            if (p.getNama() == namaPenyewa) {
+                penyewa = p;
+            }
+        }
+        return penyewa;
+    }    
+    
+    public Mobil getMobilBySupplierNamaMerk(String namaSupplier, String namaMobil, String namaMerk) {
         reloadData();
         Mobil mobil = new Mobil();
         Supplier supplier = getSupplierByNama(namaSupplier);
@@ -291,4 +303,38 @@ public class Driver {
         }
         return mobil;
     }
+    
+    public Mobil getMobilByNamaJumlahHarga(String namaMobil, int jumlah, int harga) {
+        reloadData();
+        Mobil mobil = new Mobil();
+        for (Mobil p : listMobil) {
+            if ((p.getJumlah() == jumlah) && (p.getNama().equals(namaMobil)) && (p.getHarga() == harga)) {
+                mobil = p;
+            }
+        }
+        return mobil;
+    }
+    
+    public Mobil getMobilById(int id) {
+        reloadData();
+        Mobil mobil = new Mobil();
+        for (Mobil p : listMobil) {
+            if ((p.getId() == id)) {
+                mobil = p;
+            }
+        }
+        return mobil;
+    }
+        
+    public Transaksi getTransaksi(String namaPenyewa, String namaMobil, int jumlah, int harga) {
+        reloadData();
+        Transaksi transaksi = new Transaksi();
+        Penyewa penyewa = getPenyewaByNama(namaPenyewa);
+        for (Transaksi p : listTransaksi) {
+            if ((p.getIdPenyewa() == penyewa.getId()) && (p.getJumlahMobil()== jumlah) && (p.getNamaMobil().equals(namaMobil)) && (p.getHarga() == harga)) {
+                transaksi = p;
+            }
+        }
+        return transaksi;
+    }       
 }

@@ -235,7 +235,7 @@ public class ManageMobil extends javax.swing.JPanel {
         namaSupplier = (String) tableMobil.getValueAt(selectedRow, 1);
         namaMobil = (String) tableMobil.getValueAt(selectedRow, 2);
         merkMobil = (String) tableMobil.getValueAt(selectedRow, 3);
-        mobil = driver.getMobil(namaSupplier, namaMobil, merkMobil);
+        mobil = driver.getMobilBySupplierNamaMerk(namaSupplier, namaMobil, merkMobil);
         return mobil;
     }
     

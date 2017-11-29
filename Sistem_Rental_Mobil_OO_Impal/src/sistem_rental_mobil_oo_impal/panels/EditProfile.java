@@ -68,12 +68,15 @@ public class EditProfile extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel4.setText("Contact");
 
+        contactField.setBackground(new java.awt.Color(240, 240, 240));
         contactField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         contactField.setBorder(null);
 
+        alamatField.setBackground(new java.awt.Color(240, 240, 240));
         alamatField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         alamatField.setBorder(null);
 
+        namaField.setBackground(new java.awt.Color(240, 240, 240));
         namaField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         namaField.setBorder(null);
 

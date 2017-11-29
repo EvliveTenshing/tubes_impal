@@ -260,6 +260,11 @@ public class PenyewaInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_lihatMobilButtonActionPerformed
 
     private void sewaMobilButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sewaMobilButtonActionPerformed
+        sewaMobil.loadMobil();
+        sewaMobil.reset();
+        sewaMobil.getDriver().setUserEmail(driver.getUserEmail());
+        sewaMobil.getDriver().setUserNama(driver.getUserNama());
+        sewaMobil.getDriver().setUserLevel(driver.getUserLevel());
         profile.setVisible(false);
         dashboard.setVisible(false);
         lihatMobil.setVisible(false);

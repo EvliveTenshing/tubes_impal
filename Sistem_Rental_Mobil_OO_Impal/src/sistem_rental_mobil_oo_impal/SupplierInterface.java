@@ -268,9 +268,7 @@ public class SupplierInterface extends javax.swing.JFrame {
         dashboard.setVisible(false);        
         manageMobil.setVisible(true);
         permintaanMobil.setVisible(false);
-        if ("supplier".equals(driver.getUserLevel())) {
-            manageMobil.setKirimPermintaanMobilButton(false);
-        }
+        manageMobil.setKirimPermintaanMobilButton(false);
     }//GEN-LAST:event_manageMobilButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed

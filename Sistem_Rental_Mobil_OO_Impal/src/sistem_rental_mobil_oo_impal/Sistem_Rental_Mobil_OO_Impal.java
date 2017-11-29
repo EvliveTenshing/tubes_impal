@@ -18,6 +18,7 @@ public class Sistem_Rental_Mobil_OO_Impal {
      */
     public static void main(String[] args) {
        Login login = new Login();
+       
        /*For testing
        Driver driver =  new Driver();
        Supplier supplier = new Supplier("ferrari@ferrari.com", "1234", "ferrari", "1", "2", "Supplier");

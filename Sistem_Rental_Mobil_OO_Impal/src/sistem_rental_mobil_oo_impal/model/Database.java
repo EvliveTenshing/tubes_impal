@@ -94,7 +94,7 @@ public class Database {
             String s = "SELECT * from penyewa";
             ResultSet result = statement.executeQuery(s);
             while (result.next()) {
-                Penyewa penyewa = new Penyewa(result.getInt("id_penyewa"), result.getInt("transaksi_penyewa"), result.getString("email_penyewa"), result.getString("password_penyewa"), 
+                Penyewa penyewa = new Penyewa(result.getInt("id_penyewa"), result.getInt("id_transaksi_penyewa"), result.getString("email_penyewa"), result.getString("password_penyewa"), 
                         result.getString("nama_penyewa"), result.getString("alamat_penyewa"), result.getString("contact_penyewa"), result.getString("level"));
                 penyewaList.add(penyewa);
             }
@@ -116,7 +116,7 @@ public class Database {
     }
     
     public void updatePenyewa(int id, Penyewa penyewa) {
-        String s = "UPDATE penyewa SET `transaksi_penyewa`='"+penyewa.getIdTransaksiPenyewa()+"', `email_penyewa`='"+penyewa.getEmail()+"',`password_penyewa`='"+penyewa.getPassword()+"',`nama_penyewa`='"+penyewa.getNama()+"',`alamat_penyewa`='"+penyewa.getAlamat()+"', "
+        String s = "UPDATE penyewa SET `id_transaksi_penyewa`='"+penyewa.getIdTransaksiPenyewa()+"', `email_penyewa`='"+penyewa.getEmail()+"',`password_penyewa`='"+penyewa.getPassword()+"',`nama_penyewa`='"+penyewa.getNama()+"',`alamat_penyewa`='"+penyewa.getAlamat()+"', "
                 + "`contact_penyewa`='"+penyewa.getContact()+"' WHERE id_penyewa="+id;
         query(s);
     }
@@ -204,19 +204,19 @@ public class Database {
             String s = "SELECT * from transaksi";
             ResultSet result = statement.executeQuery(s);
             while (result.next()) {
-                Transaksi transaksi = new Transaksi(result.getInt("id_transaksi"), result.getInt("id_user"), result.getInt("id_mobil"), result.getString("nama_mobil_yang_disewa"), 
+                Transaksi transaksi = new Transaksi(result.getInt("id_transaksi"), result.getInt("id_penyewa"), result.getInt("id_mobil"), result.getString("nama_mobil_yang_disewa"), 
                         result.getInt("jumlah_mobil_yang_disewa"), result.getInt("harga_sewa"), result.getDate("tanggal_pengembalian"), result.getInt("denda"), result.getInt("status_bayar"));
                 transaksiList.add(transaksi);
             }
             return transaksiList;
         } catch (Exception e) {
-            throw new IllegalArgumentException("Error ambil data transaksi");
+            throw new IllegalArgumentException(e);
         }
     }
     
     public void insertTransaksi(Transaksi transaksi) {
-        String s = "INSERT INTO transaksi(`id_penyewa`, `id_mobil`, `nama_mobil_yang_disewa`, `jumlah_mobil_yang_disewa`, `harga_sewa`, `tanggal_pengembalian`, `denda`)"
-                + " VALUES ('"+transaksi.getIdPenyewa()+"','"+transaksi.getIdMobil()+"','"+transaksi.getNamaMobil()+"','"+transaksi.getJumlahMobil()+"','"+transaksi.getHarga()+"','"+transaksi.getTanggalPengembalian()+"','"+transaksi.getDenda()+"')";
+        String s = "INSERT INTO transaksi(`id_penyewa`, `id_mobil`, `nama_mobil_yang_disewa`, `jumlah_mobil_yang_disewa`, `harga_sewa`, `tanggal_pengembalian`, `denda`, `status_bayar`)"
+                + " VALUES ('"+transaksi.getIdPenyewa()+"','"+transaksi.getIdMobil()+"','"+transaksi.getNamaMobil()+"','"+transaksi.getJumlahMobil()+"','"+transaksi.getHarga()+"','"+transaksi.getTanggalPengembalian()+"','"+transaksi.getDenda()+"', '"+transaksi.getStatusBayar()+"')";
         query(s);
     }
     
@@ -227,7 +227,7 @@ public class Database {
     
     public void updateTransaksi(int id, Transaksi transaksi) {
         String s = "UPDATE transaksi SET `id_penyewa`='"+transaksi.getIdPenyewa()+"',`id_mobil`='"+transaksi.getIdMobil()+"',`nama_mobil_yang_disewa`='"+transaksi.getNamaMobil()+"',`jumlah_mobil_yang_disewa`='"+transaksi.getJumlahMobil()+"', "
-                + "`harga_sewa`='"+transaksi.getHarga()+"',`tanggal_pengembalian`='"+transaksi.getTanggalPengembalian()+"',`denda`='"+transaksi.getDenda()+"' WHERE id_transaksi="+id;
+                + "`harga_sewa`='"+transaksi.getHarga()+"',`tanggal_pengembalian`='"+transaksi.getTanggalPengembalian()+"',`denda`='"+transaksi.getDenda()+"', `status_bayar`='"+transaksi.getStatusBayar()+"' WHERE id_transaksi="+id;
         query(s);
     }
     

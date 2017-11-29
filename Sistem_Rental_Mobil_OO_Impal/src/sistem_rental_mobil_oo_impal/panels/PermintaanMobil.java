@@ -41,6 +41,7 @@ public class PermintaanMobil extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 36)); // NOI18N
         jLabel3.setText("Permintaan Mobil");
 
+        messageField.setBackground(new java.awt.Color(240, 240, 240));
         messageField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         messageField.setBorder(null);
         messageField.addActionListener(new java.awt.event.ActionListener() {

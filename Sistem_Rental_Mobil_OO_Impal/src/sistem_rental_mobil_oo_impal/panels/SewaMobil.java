@@ -6,7 +6,15 @@
 package sistem_rental_mobil_oo_impal.panels;
 
 import java.awt.Color;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import sistem_rental_mobil_oo_impal.Driver;
+import sistem_rental_mobil_oo_impal.model.Mobil;
+import sistem_rental_mobil_oo_impal.model.Penyewa;
+import sistem_rental_mobil_oo_impal.model.Supplier;
+import sistem_rental_mobil_oo_impal.model.Transaksi;
 
 /**
  *
@@ -14,11 +22,15 @@ import sistem_rental_mobil_oo_impal.Driver;
  */
 public class SewaMobil extends javax.swing.JPanel {
     Driver driver;
+    DefaultTableModel model;
+    SimpleDateFormat dateFormat;
 
     public SewaMobil() {
         initComponents();
         this.setBackground(Color.WHITE);
         driver = new Driver();
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        model = (DefaultTableModel) tableMobil.getModel();
         reset();
     }
     
@@ -61,8 +73,6 @@ public class SewaMobil extends javax.swing.JPanel {
         tanggalPengembalian.setBackground(new java.awt.Color(255, 255, 255));
         tanggalPengembalian.setDateFormatString("dd/MM/yyyy");
 
-        jumlahField.setEditable(false);
-        jumlahField.setBackground(new java.awt.Color(255, 255, 255));
         jumlahField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jumlahField.setBorder(null);
 
@@ -79,19 +89,28 @@ public class SewaMobil extends javax.swing.JPanel {
 
         tableMobil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Mobil", "Jumlah", "Harga"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tableMobil);
-        if (tableMobil.getColumnModel().getColumnCount() > 0) {
-            tableMobil.getColumnModel().getColumn(2).setResizable(false);
-        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -135,19 +154,109 @@ public class SewaMobil extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5))
                     .addComponent(tanggalPengembalian, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addComponent(sewaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public int getJumlah() {
+        int s;
+        if ("".equals(jumlahField.getText())) {
+            s = 0;
+        }
+        else {
+            s = Integer.parseInt(jumlahField.getText());
+        }
+        return s;
+    } 
+    
+    public void setJumlah(int jumlah) {
+        String s = Integer.toString(jumlah);
+        jumlahField.setText(s);
+    }
+    
+    public String getDate() {
+        String date;
+        if (tanggalPengembalian.getDate() == null) {
+            date = "";
+        } else {
+            date = dateFormat.format(tanggalPengembalian.getDate());
+        }
+        return date;
+    }
+    
+    public void setDate(String date) {
+        tanggalPengembalian.setDateFormatString(date);
+    }
+    
     private void sewaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sewaButtonActionPerformed
-
+        int selectedRow = tableMobil.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(null, "Mohon untuk memilih mobil yang ingin di sewa pada tabel");
+        } else {
+            int jumlah = getJumlah();
+            String dateString = getDate();
+            if ((jumlah != 0) && (tanggalPengembalian.getDate() != null)) {
+                if (jumlah <= 0) {
+                    JOptionPane.showMessageDialog(null, "Mohon untuk tidak mengisi angka negatif pada jumlah mobil yang akan disewa");
+                } else {
+                    Mobil mobil = getMobil(tableMobil.getSelectedRow()); //ambil data mobil dari database
+                    Penyewa penyewa = driver.getPenyewaByEmail(driver.getUserEmail());
+                    java.util.Date date = tanggalPengembalian.getDate();
+                    java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+                    Transaksi transaksi = new Transaksi(penyewa.getId(), mobil.getId(), mobil.getNama(), jumlah, mobil.getHarga(), sqlDate);
+                    KonfirmasiSewaMobil konfirmasiSewaMobil = new KonfirmasiSewaMobil();
+                    konfirmasiSewaMobil.getDriver().setUserEmail(driver.getUserEmail());
+                    konfirmasiSewaMobil.getDriver().setUserNama(driver.getUserNama());
+                    konfirmasiSewaMobil.getDriver().setUserLevel(driver.getUserLevel());
+                    konfirmasiSewaMobil.setTransaksi(transaksi);
+                    konfirmasiSewaMobil.setMobil(mobil);
+                    konfirmasiSewaMobil.setPenyewa(penyewa);
+                    konfirmasiSewaMobil.setNamaPenyewa(driver.getUserNama());
+                    konfirmasiSewaMobil.setNamaMobil(transaksi.getNamaMobil());
+                    konfirmasiSewaMobil.setMerk(mobil.getMerk());
+                    konfirmasiSewaMobil.setJumlah(transaksi.getJumlahMobil());
+                    konfirmasiSewaMobil.setHarga(transaksi.getHarga());
+                    konfirmasiSewaMobil.setTotal(transaksi.getHarga(), transaksi.getJumlahMobil());
+                    konfirmasiSewaMobil.setDate(dateString);
+                    konfirmasiSewaMobil.setVisible(true);
+                    loadMobil();
+                    reset();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Mohon untuk mengisi jumlah mobil yang akan disewa dan/atau memilih tanggal pengembalian");
+            }
+        }         
     }//GEN-LAST:event_sewaButtonActionPerformed
-
+       
+    public void loadMobil() {
+        deleteListInTable();
+        driver.reloadData();
+        for (Mobil p : driver.getListMobil()) {
+            if (p.getJumlah() > 0) {
+               model.insertRow(model.getRowCount(), new Object[]{p.getNama(), p.getJumlah(), p.getHarga()});    
+            }
+        }
+    }
+    
+    public Mobil getMobil(int selectedRow) {
+        Mobil mobil = new Mobil();
+        String namaMobil = "";
+        int jumlah = 0;
+        int harga = 0;
+        namaMobil = (String) tableMobil.getValueAt(selectedRow, 0);
+        jumlah = (int) tableMobil.getValueAt(selectedRow, 1);
+        harga = (int) tableMobil.getValueAt(selectedRow, 2);
+        mobil = driver.getMobilByNamaJumlahHarga(namaMobil, jumlah, harga);
+        return mobil;
+    }
+    
+    public void deleteListInTable() {
+        model.setRowCount(0);
+    }
     public void reset() {
         jumlahField.setText("");
-        tanggalPengembalian.setDateFormatString("");
     }
     
     public Driver getDriver() {

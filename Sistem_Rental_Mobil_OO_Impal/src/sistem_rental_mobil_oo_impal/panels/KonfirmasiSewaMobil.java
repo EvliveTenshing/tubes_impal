@@ -6,6 +6,8 @@
 package sistem_rental_mobil_oo_impal.panels;
 
 import java.awt.Color;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import sistem_rental_mobil_oo_impal.Driver;
@@ -13,28 +15,29 @@ import sistem_rental_mobil_oo_impal.model.Pegawai;
 import sistem_rental_mobil_oo_impal.model.Penyewa;
 import sistem_rental_mobil_oo_impal.model.Supplier;
 import sistem_rental_mobil_oo_impal.model.Mobil;
+import sistem_rental_mobil_oo_impal.model.Transaksi;
 
 /**
  *
  * @author Evlive
  */
-public class EditMobil extends javax.swing.JFrame {
+public class KonfirmasiSewaMobil extends javax.swing.JFrame {
     Driver driver;
     Mobil mobil;
+    Transaksi transaksi;
+    Penyewa penyewa;
     /**
      * Creates new form EditProfile
      */
-    public EditMobil() {
+    public KonfirmasiSewaMobil() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.WHITE);
         driver = new Driver();
         mobil = new Mobil();
+        transaksi = new Transaksi();
+        penyewa = new Penyewa();
         reset();
-        if (("supplier".equals(driver.getUserLevel()))) {
-            namaSupplierField.setVisible(false);
-            namaSupplierLabel.setVisible(false);
-        }
     }
 
     /**
@@ -53,24 +56,29 @@ public class EditMobil extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         merkField = new javax.swing.JTextField();
         namaMobilField = new javax.swing.JTextField();
-        namaSupplierField = new javax.swing.JTextField();
-        submitButton = new javax.swing.JButton();
+        namaPenyewaField = new javax.swing.JTextField();
+        sewaButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
         jumlahField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         hargaField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        tanggalPengembalianField = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        totalField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 36)); // NOI18N
-        jLabel3.setText("Edit Mobil");
+        jLabel3.setText("Konfirmasi");
 
         namaSupplierLabel.setBackground(new java.awt.Color(255, 255, 255));
         namaSupplierLabel.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        namaSupplierLabel.setText("Nama Supplier");
+        namaSupplierLabel.setText("Nama Penyewa");
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -80,26 +88,29 @@ public class EditMobil extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel4.setText("Merk");
 
-        merkField.setBackground(new java.awt.Color(240, 240, 240));
+        merkField.setEditable(false);
+        merkField.setBackground(new java.awt.Color(255, 255, 255));
         merkField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         merkField.setBorder(null);
 
-        namaMobilField.setBackground(new java.awt.Color(240, 240, 240));
+        namaMobilField.setEditable(false);
+        namaMobilField.setBackground(new java.awt.Color(255, 255, 255));
         namaMobilField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         namaMobilField.setBorder(null);
 
-        namaSupplierField.setBackground(new java.awt.Color(240, 240, 240));
-        namaSupplierField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        namaSupplierField.setBorder(null);
+        namaPenyewaField.setEditable(false);
+        namaPenyewaField.setBackground(new java.awt.Color(255, 255, 255));
+        namaPenyewaField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        namaPenyewaField.setBorder(null);
 
-        submitButton.setBackground(new java.awt.Color(0, 102, 255));
-        submitButton.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        submitButton.setForeground(new java.awt.Color(255, 255, 255));
-        submitButton.setText("Submit");
-        submitButton.setBorder(null);
-        submitButton.addActionListener(new java.awt.event.ActionListener() {
+        sewaButton.setBackground(new java.awt.Color(0, 102, 255));
+        sewaButton.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        sewaButton.setForeground(new java.awt.Color(255, 255, 255));
+        sewaButton.setText("Sewa");
+        sewaButton.setBorder(null);
+        sewaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitButtonActionPerformed(evt);
+                sewaButtonActionPerformed(evt);
             }
         });
 
@@ -114,7 +125,8 @@ public class EditMobil extends javax.swing.JFrame {
             }
         });
 
-        jumlahField.setBackground(new java.awt.Color(240, 240, 240));
+        jumlahField.setEditable(false);
+        jumlahField.setBackground(new java.awt.Color(255, 255, 255));
         jumlahField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jumlahField.setBorder(null);
 
@@ -122,13 +134,36 @@ public class EditMobil extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel5.setText("Jumlah");
 
-        hargaField.setBackground(new java.awt.Color(240, 240, 240));
+        hargaField.setEditable(false);
+        hargaField.setBackground(new java.awt.Color(255, 255, 255));
         hargaField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         hargaField.setBorder(null);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel6.setText("Harga");
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel7.setText("Tanggal");
+
+        tanggalPengembalianField.setEditable(false);
+        tanggalPengembalianField.setBackground(new java.awt.Color(255, 255, 255));
+        tanggalPengembalianField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        tanggalPengembalianField.setBorder(null);
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel8.setText("Pengembalian");
+
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel9.setText("Total");
+
+        totalField.setEditable(false);
+        totalField.setBackground(new java.awt.Color(255, 255, 255));
+        totalField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        totalField.setBorder(null);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -137,38 +172,47 @@ public class EditMobil extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sewaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(namaSupplierLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(namaSupplierField, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                                    .addComponent(namaMobilField)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
-                                .addGap(111, 111, 111)
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(hargaField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(namaMobilField)
+                                    .addComponent(namaPenyewaField)
+                                    .addComponent(merkField))))
+                        .addGap(66, 66, 66))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel9))
+                                .addGap(205, 205, 205))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(totalField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jumlahField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                                        .addComponent(merkField, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                        .addGap(112, 112, 112))))
+                                        .addComponent(hargaField, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                        .addComponent(jumlahField))
+                                    .addComponent(tanggalPengembalianField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,28 +222,38 @@ public class EditMobil extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(namaSupplierLabel)
-                    .addComponent(namaSupplierField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(namaPenyewaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(namaMobilField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(merkField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jumlahField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(hargaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                    .addComponent(hargaField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(totalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(tanggalPengembalianField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addGap(34, 34, 34)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sewaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,7 +270,7 @@ public class EditMobil extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
@@ -226,42 +280,24 @@ public class EditMobil extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_closeButtonActionPerformed
 
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        String namaMobil = getNamaMobil();
-        String merk = getMerk();
-        int jumlah = getJumlah();
-        int harga = getHarga();
-        if ("pegawai".equals(driver.getUserLevel())) {
-            Supplier supplier = driver.getSupplierByNama(getNamaSupplier());
-            mobil.setIdSupplier(supplier.getId());
-            driver.getDb().updateMobil(mobil.getId(), mobil);
-        }
-        if (!"".equals(namaMobil)) {
-            mobil.setNama(namaMobil);
-            driver.getDb().updateMobil(mobil.getId(), mobil);
-        }
-        if (!"".equals(merk)) {
-            mobil.setMerk(merk);
-            driver.getDb().updateMobil(mobil.getId(), mobil);
-        }
-        if (jumlah > 0) {
-            mobil.setJumlah(jumlah);
-            driver.getDb().updateMobil(mobil.getId(), mobil);
-        }
-        if (harga > 0) {
-            mobil.setHarga(harga);
-            driver.getDb().updateMobil(mobil.getId(), mobil);
-        }
+    private void sewaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sewaButtonActionPerformed
+        driver.getDb().insertTransaksi(transaksi);
+        mobil.setJumlah(mobil.getJumlah()-transaksi.getJumlahMobil());
+        Transaksi transaksiID = driver.getTransaksi(penyewa.getNama(), transaksi.getNamaMobil(), transaksi.getJumlahMobil(), transaksi.getHarga());
+        driver.getDb().updateMobil(mobil.getId(), mobil);
+        penyewa.setIdTransaksiPenyewa(transaksiID.getId());
+        driver.getDb().updatePenyewa(penyewa.getId(), penyewa);
+        reset();
         this.dispose();
         this.setVisible(false);
-    }//GEN-LAST:event_submitButtonActionPerformed
+    }//GEN-LAST:event_sewaButtonActionPerformed
 
-    public String getNamaSupplier() {
-        return namaSupplierField.getText();
-    } 
+    public String getNamaPenyewa() {
+        return namaPenyewaField.getText();
+    }
     
-    public void setNamaSupplier(String namaSupplier) {
-        namaSupplierField.setText(namaSupplier);
+    public void setNamaPenyewa(String namaPenyewa) {
+        namaPenyewaField.setText(namaPenyewa);
     }
     
     public String getNamaMobil() {
@@ -269,7 +305,7 @@ public class EditMobil extends javax.swing.JFrame {
     }
     
     public void setNamaMobil(String namaMobil) {
-        namaMobilField.setText(namaMobil);
+       namaMobilField.setText(namaMobil);
     }
     
     public String getMerk() {
@@ -281,58 +317,83 @@ public class EditMobil extends javax.swing.JFrame {
     }
     
     public int getJumlah() {
-        int jumlah;
-        if (jumlahField.getText().equals("")) {
-            jumlah = 0;
-        } else {
-            jumlah = Integer.parseInt(jumlahField.getText());
-        }
-        return jumlah;
-    }
+        int s = Integer.parseInt(jumlahField.getText());
+        return s;
+    } 
     
     public void setJumlah(int jumlah) {
-        String jumlahString = Integer.toString(jumlah);
-        jumlahField.setText(jumlahString);
+        String s = Integer.toString(jumlah);
+        jumlahField.setText(s);
     }
     
     public int getHarga() {
-        int harga;
-        if (hargaField.getText().equals("")) {
-            harga = 0;
-        } else {
-            harga = Integer.parseInt(hargaField.getText());
-        }
-        return harga;
+        int s = Integer.parseInt(hargaField.getText());
+        return s;
     }
     
     public void setHarga(int harga) {
-       String hargaString = Integer.toString(harga);
-       hargaField.setText(hargaString);
+        String s = Integer.toString(harga);
+        hargaField.setText(s);
+    }
+    
+    public int getTotal() {
+        int s = Integer.parseInt(totalField.getText());
+        return s;
+    }
+    
+    public void setTotal(int harga, int jumlah) {
+        int total = harga*jumlah;
+        String s = Integer.toString(total);
+        totalField.setText(s);
+    }
+    
+    
+    public String getDate() {
+        return tanggalPengembalianField.getText();
+    }
+    
+    public void setDate(String date) {
+        tanggalPengembalianField.setText(date);
     }
     
     public void reset() {
-        setNamaSupplier("");
+        setNamaPenyewa("");
         setNamaMobil("");
         setMerk("");
-        jumlahField.setText("");
-        hargaField.setText("");
+        setJumlah(0);
+        setHarga(0);
+        setTotal(0, 0);
+        setDate("");
     }
     
     public Driver getDriver() {
         return driver;
     }
     
-    public void setNamaSupplierFieldNotEditable() {
-        namaSupplierField.setEditable(false);
+    public Transaksi getTransaksi() {
+        return transaksi;
     }
-    
+
+    public void setTransaksi(Transaksi transaksi) {
+        this.transaksi = transaksi;
+    }
+
     public Mobil getMobil() {
         return mobil;
     }
-    
+
     public void setMobil(Mobil mobil) {
         this.mobil = mobil;
     }
+
+    public Penyewa getPenyewa() {
+        return penyewa;
+    }
+
+    public void setPenyewa(Penyewa penyewa) {
+        this.penyewa = penyewa;
+    }
+    
     
     /**
      * @param args the command line arguments
@@ -351,14 +412,26 @@ public class EditMobil extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditMobil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KonfirmasiSewaMobil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditMobil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KonfirmasiSewaMobil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditMobil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KonfirmasiSewaMobil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditMobil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KonfirmasiSewaMobil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -367,7 +440,7 @@ public class EditMobil extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditMobil().setVisible(true);
+                new KonfirmasiSewaMobil().setVisible(true);
             }
         });
     }
@@ -380,12 +453,17 @@ public class EditMobil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jumlahField;
     private javax.swing.JTextField merkField;
     private javax.swing.JTextField namaMobilField;
-    private javax.swing.JTextField namaSupplierField;
+    private javax.swing.JTextField namaPenyewaField;
     private javax.swing.JLabel namaSupplierLabel;
-    private javax.swing.JButton submitButton;
+    private javax.swing.JButton sewaButton;
+    private javax.swing.JTextField tanggalPengembalianField;
+    private javax.swing.JTextField totalField;
     // End of variables declaration//GEN-END:variables
 }

@@ -304,6 +304,7 @@ public class PegawaiInterface extends javax.swing.JFrame {
         manageMobil.getDriver().setUserNama(driver.getUserNama());
         manageMobil.getDriver().setUserLevel(driver.getUserLevel());
         manageMobil.loadMobil();
+        manageMobil.setKirimPermintaanMobilButton(true);
         profile.setVisible(false);
         dashboard.setVisible(false);        
         manageMobil.setVisible(true);

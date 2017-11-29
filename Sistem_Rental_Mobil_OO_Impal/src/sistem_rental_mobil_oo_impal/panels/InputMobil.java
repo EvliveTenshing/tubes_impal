@@ -74,12 +74,15 @@ public class InputMobil extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel4.setText("Merk");
 
+        merkField.setBackground(new java.awt.Color(240, 240, 240));
         merkField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         merkField.setBorder(null);
 
+        namaMobilField.setBackground(new java.awt.Color(240, 240, 240));
         namaMobilField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         namaMobilField.setBorder(null);
 
+        namaSupplierField.setBackground(new java.awt.Color(240, 240, 240));
         namaSupplierField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         namaSupplierField.setBorder(null);
 
@@ -105,6 +108,7 @@ public class InputMobil extends javax.swing.JFrame {
             }
         });
 
+        jumlahField.setBackground(new java.awt.Color(240, 240, 240));
         jumlahField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jumlahField.setBorder(null);
 
@@ -112,6 +116,7 @@ public class InputMobil extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel5.setText("Jumlah");
 
+        hargaField.setBackground(new java.awt.Color(240, 240, 240));
         hargaField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         hargaField.setBorder(null);
 
