@@ -21,9 +21,9 @@ import sistem_rental_mobil_oo_impal.model.Transaksi;
  * @author Evlive
  */
 public class SewaMobil extends javax.swing.JPanel {
-    Driver driver;
-    DefaultTableModel model;
-    SimpleDateFormat dateFormat;
+    private Driver driver;
+    private DefaultTableModel model;
+    private SimpleDateFormat dateFormat;
 
     public SewaMobil() {
         initComponents();

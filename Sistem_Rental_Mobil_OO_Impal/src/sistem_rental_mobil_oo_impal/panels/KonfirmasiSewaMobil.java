@@ -22,10 +22,10 @@ import sistem_rental_mobil_oo_impal.model.Transaksi;
  * @author Evlive
  */
 public class KonfirmasiSewaMobil extends javax.swing.JFrame {
-    Driver driver;
-    Mobil mobil;
-    Transaksi transaksi;
-    Penyewa penyewa;
+    private Driver driver;
+    private Mobil mobil;
+    private Transaksi transaksi;
+    private Penyewa penyewa;
     /**
      * Creates new form EditProfile
      */

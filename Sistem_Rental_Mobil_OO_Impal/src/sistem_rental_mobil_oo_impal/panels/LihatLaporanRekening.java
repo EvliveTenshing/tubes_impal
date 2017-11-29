@@ -6,15 +6,20 @@
 package sistem_rental_mobil_oo_impal.panels;
 
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 import sistem_rental_mobil_oo_impal.Driver;
+import sistem_rental_mobil_oo_impal.model.LaporanRekening;
 
 /**
  *
  * @author Evlive
  */
 public class LihatLaporanRekening extends javax.swing.JPanel {
-    Driver driver;
-
+    private Driver driver;
+    private SimpleDateFormat dateFormat;
+    private LaporanRekening laporanRekening;
+    
     /**
      * Creates new form Profile
      */
@@ -22,14 +27,23 @@ public class LihatLaporanRekening extends javax.swing.JPanel {
         initComponents();
         
         this.setBackground(Color.WHITE);
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         driver = new Driver();
+        laporanRekening = new LaporanRekening();
     }
     
-    public void reset() {
-        /*emailField.setText("");
-        alamatField.setText("");
-        contactField.setText("");
-        sebagaiField.setText("");*/
+    public String getDate() {
+        String date;
+        if (tanggal.getDate() == null) {
+            date = "";
+        } else {
+            date = dateFormat.format(tanggal.getDate());
+        }
+        return date;
+    }
+    
+    public void setDate(String date) {
+        tanggal.setDateFormatString(date);
     }
     
     public Driver getDriver() {
@@ -46,37 +60,28 @@ public class LihatLaporanRekening extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jumlahField = new javax.swing.JTextField();
-        simpanpPadaDatabaseButton = new javax.swing.JButton();
+        lihatSaldoButton = new javax.swing.JButton();
         lihatSemuaLaporanRekeningButton = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        tanggal = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 36)); // NOI18N
         jLabel3.setText("Lihat Laporan Rekening");
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel1.setText("Jumlah");
-
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel6.setText("Tanggal");
 
-        jumlahField.setEditable(false);
-        jumlahField.setBackground(new java.awt.Color(255, 255, 255));
-        jumlahField.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jumlahField.setBorder(null);
-
-        simpanpPadaDatabaseButton.setBackground(new java.awt.Color(0, 102, 255));
-        simpanpPadaDatabaseButton.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        simpanpPadaDatabaseButton.setForeground(new java.awt.Color(255, 255, 255));
-        simpanpPadaDatabaseButton.setText("Simpan pada database");
-        simpanpPadaDatabaseButton.setBorder(null);
-        simpanpPadaDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
+        lihatSaldoButton.setBackground(new java.awt.Color(0, 102, 255));
+        lihatSaldoButton.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        lihatSaldoButton.setForeground(new java.awt.Color(255, 255, 255));
+        lihatSaldoButton.setText("Lihat Saldo");
+        lihatSaldoButton.setBorder(null);
+        lihatSaldoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simpanpPadaDatabaseButtonActionPerformed(evt);
+                lihatSaldoButtonActionPerformed(evt);
             }
         });
 
@@ -91,26 +96,25 @@ public class LihatLaporanRekening extends javax.swing.JPanel {
             }
         });
 
+        tanggal.setDateFormatString("dd/MM/yyyy");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(90, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel3))
-                        .addGap(2, 2, 2))
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jumlahField, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3)
+                            .addGap(2, 2, 2))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(simpanpPadaDatabaseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lihatSaldoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(lihatSemuaLaporanRekeningButton, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(120, 120, 120))
@@ -120,46 +124,47 @@ public class LihatLaporanRekening extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(87, 87, 87)
                 .addComponent(jLabel3)
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jumlahField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lihatSemuaLaporanRekeningButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(1, 1, 1))
-                    .addComponent(simpanpPadaDatabaseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75))
+                    .addComponent(jLabel6)
+                    .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lihatSaldoButton, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(lihatSemuaLaporanRekeningButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void simpanpPadaDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanpPadaDatabaseButtonActionPerformed
-        EditProfile editProfile = new EditProfile();
-        editProfile.getDriver().setUserEmail(driver.getUserEmail());
-        editProfile.getDriver().setUserNama(driver.getUserNama());
-        editProfile.getDriver().setUserAlamat(driver.getUserAlamat());
-        editProfile.getDriver().setUserContact(driver.getUserContact());
-        editProfile.getDriver().setUserLevel(driver.getUserLevel());
-        editProfile.setVisible(true);
-    }//GEN-LAST:event_simpanpPadaDatabaseButtonActionPerformed
+    private void lihatSaldoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lihatSaldoButtonActionPerformed
+        if (tanggal.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Mohon untuk memilih tanggal untuk menampilkan laporan hari ini");
+        } else {
+            java.util.Date date = tanggal.getDate();
+            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+            int jumlah = driver.getJumlahSaldoLaporanRekening(sqlDate);
+            laporanRekening.setJumlah(jumlah);
+            laporanRekening.setTanggal(sqlDate);
+            LihatSaldo lihatSaldo = new LihatSaldo();
+            lihatSaldo.setLaporanRekening(laporanRekening);
+            lihatSaldo.setJumlah(jumlah);
+            lihatSaldo.setDate(getDate());
+            lihatSaldo.setVisible(true);
+        }
+    }//GEN-LAST:event_lihatSaldoButtonActionPerformed
 
     private void lihatSemuaLaporanRekeningButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lihatSemuaLaporanRekeningButtonActionPerformed
-        // TODO add your handling code here:
+        LihatSemuaLaporanRekening lihatSemuaLaporanRekening = new LihatSemuaLaporanRekening();
+        lihatSemuaLaporanRekening.loadLaporanRekening();
+        lihatSemuaLaporanRekening.setVisible(true);
     }//GEN-LAST:event_lihatSemuaLaporanRekeningButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jumlahField;
+    private javax.swing.JButton lihatSaldoButton;
     private javax.swing.JButton lihatSemuaLaporanRekeningButton;
-    private javax.swing.JButton simpanpPadaDatabaseButton;
+    private com.toedter.calendar.JDateChooser tanggal;
     // End of variables declaration//GEN-END:variables
 }

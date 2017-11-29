@@ -68,7 +68,7 @@
               </Group>
               <Component id="lihatPenyewaButton" alignment="0" max="32767" attributes="0"/>
               <Component id="lihatSupplierButton" alignment="0" max="32767" attributes="0"/>
-              <Component id="lihatLaporanRekening" alignment="0" max="32767" attributes="0"/>
+              <Component id="lihatLaporanRekeningButton" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -89,7 +89,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lihatSupplierButton" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="lihatLaporanRekening" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="lihatLaporanRekeningButton" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="logoutButton" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace pref="66" max="32767" attributes="0"/>
@@ -237,7 +237,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lihatSupplierButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="lihatLaporanRekening">
+        <Component class="javax.swing.JButton" name="lihatLaporanRekeningButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="66" red="0" type="rgb"/>
@@ -254,7 +254,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lihatLaporanRekeningActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lihatLaporanRekeningButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

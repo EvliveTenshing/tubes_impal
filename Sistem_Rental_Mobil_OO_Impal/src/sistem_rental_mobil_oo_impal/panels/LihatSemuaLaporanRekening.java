@@ -22,10 +22,10 @@ import sistem_rental_mobil_oo_impal.model.Mobil;
  * @author Evlive
  */
 public class LihatSemuaLaporanRekening extends javax.swing.JFrame {
-    Driver driver;
-    LaporanRekening laporanRekening;
-    DefaultTableModel model;
-    SimpleDateFormat dateFormat;
+    private Driver driver;
+    private LaporanRekening laporanRekening;
+    private DefaultTableModel model;
+    private SimpleDateFormat dateFormat;
     /**
      * Creates new form EditProfile
      */

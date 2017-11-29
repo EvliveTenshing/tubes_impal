@@ -13,7 +13,7 @@ import sistem_rental_mobil_oo_impal.Driver;
  * @author Evlive
  */
 public class Dashboard extends javax.swing.JPanel {
-    Driver driver;
+    private Driver driver;
 
     /**
      * Creates new form Profile

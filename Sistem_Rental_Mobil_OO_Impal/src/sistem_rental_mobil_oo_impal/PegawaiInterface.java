@@ -13,9 +13,11 @@ import sistem_rental_mobil_oo_impal.model.Pegawai;
 import sistem_rental_mobil_oo_impal.model.Penyewa;
 import sistem_rental_mobil_oo_impal.model.Supplier;
 import sistem_rental_mobil_oo_impal.panels.Dashboard;
+import sistem_rental_mobil_oo_impal.panels.LihatLaporanRekening;
 import sistem_rental_mobil_oo_impal.panels.LihatPenyewa;
 import sistem_rental_mobil_oo_impal.panels.LihatSupplier;
 import sistem_rental_mobil_oo_impal.panels.ManageMobil;
+import sistem_rental_mobil_oo_impal.panels.ManageTransaksi;
 import sistem_rental_mobil_oo_impal.panels.PermintaanMobil;
 import sistem_rental_mobil_oo_impal.panels.Profile;
 
@@ -24,13 +26,15 @@ import sistem_rental_mobil_oo_impal.panels.Profile;
  * @author Evlive
  */
 public class PegawaiInterface extends javax.swing.JFrame {
-    Driver driver;
-    GridBagLayout layout = new GridBagLayout();
-    Profile profile;
-    ManageMobil manageMobil;
-    Dashboard dashboard;
-    LihatPenyewa lihatPenyewa;
-    LihatSupplier lihatSupplier;
+    private Driver driver;
+    private GridBagLayout layout = new GridBagLayout();
+    private Profile profile;
+    private ManageMobil manageMobil;
+    private Dashboard dashboard;
+    private LihatPenyewa lihatPenyewa;
+    private LihatSupplier lihatSupplier;
+    private ManageTransaksi manageTransaksi;
+    private LihatLaporanRekening lihatLaporanRekening;
     
     /**
      * Creates new form Supplier
@@ -44,7 +48,6 @@ public class PegawaiInterface extends javax.swing.JFrame {
         dashboard  = new Dashboard();
         DynamicPane.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.BOTH;
         c.gridx = 0;
         c.gridy = 0;
         DynamicPane.add(dashboard, c);
@@ -56,23 +59,46 @@ public class PegawaiInterface extends javax.swing.JFrame {
         c.gridx = 0;
         c.gridy = 0;
         DynamicPane.add(profile, c);
-        
+
         manageMobil = new ManageMobil();
         c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
         c.gridx = 0;
         c.gridy = 0;
         DynamicPane.add(manageMobil, c);
-        
+
         lihatPenyewa = new LihatPenyewa();
         c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
         DynamicPane.add(lihatPenyewa, c);
+
+        lihatSupplier = new LihatSupplier();
+        c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        DynamicPane.add(lihatSupplier, c);
+
+        manageTransaksi = new ManageTransaksi();
+        c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.gridx = 0;
+        c.gridy = 0;
+        DynamicPane.add(manageTransaksi, c);
+
+        lihatLaporanRekening = new LihatLaporanRekening();
+        c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        DynamicPane.add(lihatLaporanRekening, c);
         
         dashboard.setVisible(true);
         profile.setVisible(false);
         manageMobil.setVisible(false);
         lihatPenyewa.setVisible(false);
+        lihatSupplier.setVisible(false);
+        manageTransaksi.setVisible(false);
+        lihatLaporanRekening.setVisible(false);
     }
     
     /**
@@ -93,7 +119,7 @@ public class PegawaiInterface extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lihatPenyewaButton = new javax.swing.JButton();
         lihatSupplierButton = new javax.swing.JButton();
-        lihatLaporanRekening = new javax.swing.JButton();
+        lihatLaporanRekeningButton = new javax.swing.JButton();
         DynamicPane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -174,14 +200,14 @@ public class PegawaiInterface extends javax.swing.JFrame {
             }
         });
 
-        lihatLaporanRekening.setBackground(new java.awt.Color(0, 102, 255));
-        lihatLaporanRekening.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        lihatLaporanRekening.setForeground(new java.awt.Color(255, 255, 255));
-        lihatLaporanRekening.setText("Lihat Laporan Rekening");
-        lihatLaporanRekening.setBorder(null);
-        lihatLaporanRekening.addActionListener(new java.awt.event.ActionListener() {
+        lihatLaporanRekeningButton.setBackground(new java.awt.Color(0, 102, 255));
+        lihatLaporanRekeningButton.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        lihatLaporanRekeningButton.setForeground(new java.awt.Color(255, 255, 255));
+        lihatLaporanRekeningButton.setText("Lihat Laporan Rekening");
+        lihatLaporanRekeningButton.setBorder(null);
+        lihatLaporanRekeningButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lihatLaporanRekeningActionPerformed(evt);
+                lihatLaporanRekeningButtonActionPerformed(evt);
             }
         });
 
@@ -203,7 +229,7 @@ public class PegawaiInterface extends javax.swing.JFrame {
                 .addGap(28, 28, 28))
             .addComponent(lihatPenyewaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lihatSupplierButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lihatLaporanRekening, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lihatLaporanRekeningButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,7 +249,7 @@ public class PegawaiInterface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lihatSupplierButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lihatLaporanRekening, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lihatLaporanRekeningButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(66, Short.MAX_VALUE))
@@ -291,11 +317,23 @@ public class PegawaiInterface extends javax.swing.JFrame {
         dashboard.setVisible(false);
         manageMobil.setVisible(false);
         lihatPenyewa.setVisible(false);
-        lihatSupplier.setVisible(false);        
+        lihatSupplier.setVisible(false);
+        manageTransaksi.setVisible(false);
+        lihatLaporanRekening.setVisible(false);         
     }//GEN-LAST:event_myProfileButtonActionPerformed
 
     private void manageTransaksiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageTransaksiButtonActionPerformed
-
+        manageTransaksi.getDriver().setUserEmail(driver.getUserEmail());
+        manageTransaksi.getDriver().setUserNama(driver.getUserNama());
+        manageTransaksi.getDriver().setUserLevel(driver.getUserLevel());
+        manageTransaksi.loadTransaksi();
+        profile.setVisible(false);
+        dashboard.setVisible(false);
+        manageMobil.setVisible(false);
+        lihatPenyewa.setVisible(false);
+        lihatSupplier.setVisible(false);
+        manageTransaksi.setVisible(true);
+        lihatLaporanRekening.setVisible(false);   
     }//GEN-LAST:event_manageTransaksiButtonActionPerformed
 
     private void manageMobilButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageMobilButtonActionPerformed
@@ -310,6 +348,8 @@ public class PegawaiInterface extends javax.swing.JFrame {
         manageMobil.setVisible(true);
         lihatPenyewa.setVisible(false);
         lihatSupplier.setVisible(false);
+        manageTransaksi.setVisible(false);
+        lihatLaporanRekening.setVisible(false);
     }//GEN-LAST:event_manageMobilButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
@@ -320,24 +360,37 @@ public class PegawaiInterface extends javax.swing.JFrame {
     private void lihatPenyewaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lihatPenyewaButtonActionPerformed
         lihatPenyewa.loadPenyewa();
         profile.setVisible(false);
-        dashboard.setVisible(false);        
+        dashboard.setVisible(false);
         manageMobil.setVisible(false);
         lihatPenyewa.setVisible(true);
         lihatSupplier.setVisible(false);
+        manageTransaksi.setVisible(false);
+        lihatLaporanRekening.setVisible(false);
     }//GEN-LAST:event_lihatPenyewaButtonActionPerformed
 
     private void lihatSupplierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lihatSupplierButtonActionPerformed
         lihatSupplier.loadSupplier();
         profile.setVisible(false);
-        dashboard.setVisible(false);        
+        dashboard.setVisible(false);
         manageMobil.setVisible(false);
         lihatPenyewa.setVisible(false);
         lihatSupplier.setVisible(true);
+        manageTransaksi.setVisible(false);
+        lihatLaporanRekening.setVisible(false);
     }//GEN-LAST:event_lihatSupplierButtonActionPerformed
 
-    private void lihatLaporanRekeningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lihatLaporanRekeningActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lihatLaporanRekeningActionPerformed
+    private void lihatLaporanRekeningButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lihatLaporanRekeningButtonActionPerformed
+        lihatLaporanRekening.getDriver().setUserEmail(driver.getUserEmail());
+        lihatLaporanRekening.getDriver().setUserNama(driver.getUserNama());
+        lihatLaporanRekening.getDriver().setUserLevel(driver.getUserLevel());
+        profile.setVisible(false);
+        dashboard.setVisible(false);
+        manageMobil.setVisible(false);
+        lihatPenyewa.setVisible(false);
+        lihatSupplier.setVisible(false);
+        manageTransaksi.setVisible(false);
+        lihatLaporanRekening.setVisible(true);
+    }//GEN-LAST:event_lihatLaporanRekeningButtonActionPerformed
 
     public Driver getDriver() {
         return driver;
@@ -367,7 +420,7 @@ public class PegawaiInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton lihatLaporanRekening;
+    private javax.swing.JButton lihatLaporanRekeningButton;
     private javax.swing.JButton lihatPenyewaButton;
     private javax.swing.JButton lihatSupplierButton;
     private javax.swing.JButton logoutButton;

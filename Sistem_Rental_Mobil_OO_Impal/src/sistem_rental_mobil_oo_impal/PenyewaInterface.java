@@ -24,12 +24,12 @@ import sistem_rental_mobil_oo_impal.panels.SewaMobil;
  * @author Evlive
  */
 public class PenyewaInterface extends javax.swing.JFrame {
-    Driver driver;
-    GridBagLayout layout = new GridBagLayout();
-    Profile profile;
-    LihatMobil lihatMobil;
-    Dashboard dashboard;
-    SewaMobil sewaMobil;
+    private Driver driver;
+    private GridBagLayout layout = new GridBagLayout();
+    private Profile profile;
+    private LihatMobil lihatMobil;
+    private Dashboard dashboard;
+    private SewaMobil sewaMobil;
     
     /**
      * Creates new form Supplier

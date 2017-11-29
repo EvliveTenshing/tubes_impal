@@ -14,7 +14,7 @@ import sistem_rental_mobil_oo_impal.model.Supplier;
  * @author Evlive
  */
 public class PermintaanMobil extends javax.swing.JPanel {
-    Driver driver;
+    private Driver driver;
     
     /**
      * Creates new form Profile

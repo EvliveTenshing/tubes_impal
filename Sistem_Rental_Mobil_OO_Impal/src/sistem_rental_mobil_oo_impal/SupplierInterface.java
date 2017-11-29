@@ -23,12 +23,12 @@ import sistem_rental_mobil_oo_impal.panels.Profile;
  * @author Evlive
  */
 public class SupplierInterface extends javax.swing.JFrame {
-    Driver driver;
-    GridBagLayout layout = new GridBagLayout();
-    Profile profile;
-    ManageMobil manageMobil;
-    PermintaanMobil permintaanMobil;
-    Dashboard dashboard;
+    private Driver driver;
+    private GridBagLayout layout = new GridBagLayout();
+    private Profile profile;
+    private ManageMobil manageMobil;
+    private PermintaanMobil permintaanMobil;
+    private Dashboard dashboard;
     
     /**
      * Creates new form Supplier

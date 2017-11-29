@@ -20,9 +20,9 @@ import sistem_rental_mobil_oo_impal.model.Transaksi;
  * @author Evlive
  */
 public class ManageTransaksi extends javax.swing.JPanel {
-    Driver driver;
-    DefaultTableModel model;
-    SimpleDateFormat dateFormat;
+    private Driver driver;
+    private DefaultTableModel model;
+    private SimpleDateFormat dateFormat;
     
     /**
      * Creates new form ManageMobil
@@ -166,9 +166,9 @@ public class ManageTransaksi extends javax.swing.JPanel {
         } else {
             Transaksi transaksi = getTransaksi(selectedRow);
             editTransaksi.setTransaksi(transaksi);
+            editTransaksi.setVisible(true);
+            loadTransaksi();
         }        
-        editTransaksi.setVisible(true);
-        loadTransaksi();
     }//GEN-LAST:event_editTransaksiButtonActionPerformed
     
     public void loadTransaksi() {

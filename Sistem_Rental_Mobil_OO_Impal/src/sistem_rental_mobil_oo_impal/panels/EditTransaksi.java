@@ -20,8 +20,8 @@ import sistem_rental_mobil_oo_impal.model.Transaksi;
  * @author Evlive
  */
 public class EditTransaksi extends javax.swing.JFrame {
-    Driver driver;
-    Transaksi transaksi;
+    private Driver driver;
+    private Transaksi transaksi;
     /**
      * Creates new form EditProfile
      */
@@ -196,7 +196,7 @@ public class EditTransaksi extends javax.swing.JFrame {
             transaksi.setStatusBayar(1);
             driver.getDb().updateTransaksi(transaksi.getId(), transaksi);
         }
-        if (!"Belum bayar".equals(statusBayar)) {
+        if ("Belum bayar".equals(statusBayar)) {
             transaksi.setStatusBayar(0);
             driver.getDb().updateTransaksi(transaksi.getId(), transaksi);
         }
@@ -225,7 +225,7 @@ public class EditTransaksi extends javax.swing.JFrame {
     }
     
     public void reset() {
-        
+        setDenda(0);
     }
     
     public Driver getDriver() {

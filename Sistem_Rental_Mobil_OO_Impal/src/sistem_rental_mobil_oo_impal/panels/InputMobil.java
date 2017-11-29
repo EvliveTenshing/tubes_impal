@@ -19,7 +19,7 @@ import sistem_rental_mobil_oo_impal.model.Mobil;
  * @author Evlive
  */
 public class InputMobil extends javax.swing.JFrame {
-    Driver driver;
+    private Driver driver;
     /**
      * Creates new form EditProfile
      */

@@ -18,8 +18,8 @@ import sistem_rental_mobil_oo_impal.model.Supplier;
  * @author Evlive
  */
 public class LihatPenyewa extends javax.swing.JPanel {
-    Driver driver;
-    DefaultTableModel model;
+    private Driver driver;
+    private DefaultTableModel model;
     
     /**
      * Creates new form ManageMobil

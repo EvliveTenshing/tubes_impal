@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2017 at 11:33 AM
+-- Generation Time: Nov 29, 2017 at 06:05 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -66,7 +66,8 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `email_pegawai`, `password_pegawai`, `nama_pegawai`, `alamat_pegawai`, `contact_pegawai`, `level`) VALUES
-(1, 'admin', 'admin', 'admin', 'admin', '1234', 'pegawai');
+(1, 'admin', 'admin', 'admin', 'admin', '1234', 'pegawai'),
+(2, 'tidakngulang@gmail.com', '1234', 'admin', 'admin', '1245', 'pegawai');
 
 -- --------------------------------------------------------
 
@@ -80,6 +81,13 @@ CREATE TABLE `pelaporan_rekening` (
   `tanggal_saldo` date NOT NULL,
   `keterangan_saldo` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pelaporan_rekening`
+--
+
+INSERT INTO `pelaporan_rekening` (`id_saldo`, `jumlah_saldo`, `tanggal_saldo`, `keterangan_saldo`) VALUES
+(2, 1010000, '2017-11-30', 'null');
 
 -- --------------------------------------------------------
 
@@ -155,7 +163,7 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_transaksi`, `id_penyewa`, `id_mobil`, `nama_mobil_yang_disewa`, `jumlah_mobil_yang_disewa`, `harga_sewa`, `tanggal_pengembalian`, `denda`, `status_bayar`) VALUES
-(6, 1, 1, '458_spider', 1, 1000000, '2017-11-30', 0, 0);
+(6, 1, 1, '458_spider', 1, 1000000, '2017-11-30', 10000, 1);
 
 --
 -- Indexes for dumped tables
@@ -214,17 +222,17 @@ ALTER TABLE `mobil`
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id_pegawai` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pegawai` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `pelaporan_rekening`
 --
 ALTER TABLE `pelaporan_rekening`
-  MODIFY `id_saldo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_saldo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `penyewa`
 --
 ALTER TABLE `penyewa`
-  MODIFY `id_penyewa` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_penyewa` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `supplier`
 --

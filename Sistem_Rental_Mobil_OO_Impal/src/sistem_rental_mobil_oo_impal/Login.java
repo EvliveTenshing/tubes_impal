@@ -301,16 +301,16 @@ public class Login extends javax.swing.JFrame {
         signup.setVisible(true);
     }//GEN-LAST:event_signUpButtonActionPerformed
     
-    private String getEmail() {
+    public String getEmail() {
         return emailField.getText();
     }
     
-    private String getPassword() {
+    public String getPassword() {
         String pass = new String(passwordField.getPassword());
         return pass;
     }
     
-    private void reset() {
+    public void reset() {
         emailField.setText("");
         passwordField.setText("");
     }

@@ -5,6 +5,8 @@
  */
 package sistem_rental_mobil_oo_impal;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import sistem_rental_mobil_oo_impal.model.Database;
@@ -40,10 +42,12 @@ public class Driver {
     private String userAlamat;
     private String userContact;
     private String userLevel;
+    private SimpleDateFormat dateFormat;
 
     public Driver() {
         db = new Database();
         db.connect();
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         listPegawai = db.getListPegawai();
         listSupplier = db.getListSupplier();
         listPenyewa = db.getListPenyewa();
@@ -285,7 +289,7 @@ public class Driver {
         Penyewa penyewa = new Penyewa();
         penyewa.setNama("");
         for (Penyewa p : listPenyewa) {
-            if (p.getNama() == namaPenyewa) {
+            if (p.getNama().equals(namaPenyewa)) {
                 penyewa = p;
             }
         }
@@ -331,10 +335,24 @@ public class Driver {
         Transaksi transaksi = new Transaksi();
         Penyewa penyewa = getPenyewaByNama(namaPenyewa);
         for (Transaksi p : listTransaksi) {
-            if ((p.getIdPenyewa() == penyewa.getId()) && (p.getJumlahMobil()== jumlah) && (p.getNamaMobil().equals(namaMobil)) && (p.getHarga() == harga)) {
+            if ((p.getIdPenyewa() == penyewa.getId()) && (p.getJumlahMobil() == jumlah) && (p.getNamaMobil().equals(namaMobil)) && (p.getHarga() == harga)) {
                 transaksi = p;
             }
         }
         return transaksi;
-    }       
+    }
+    
+    public int getJumlahSaldoLaporanRekening(Date date) {
+        reloadData();
+        int jumlah = 0;
+        for (Transaksi p : listTransaksi) {
+            String tanggalTransaksi = dateFormat.format(p.getTanggalPengembalian());
+            String tanggalLaporan = dateFormat.format(date);
+            if (tanggalTransaksi.equals(tanggalLaporan)) {
+                int harga = p.getJumlahMobil()*p.getHarga();
+                jumlah = jumlah + harga + p.getDenda();
+            }
+        }
+        return jumlah;
+    }
 }

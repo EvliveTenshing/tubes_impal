@@ -21,7 +21,7 @@ import sistem_rental_mobil_oo_impal.model.Supplier;
  * @author Evlive
  */
 public class Signup extends javax.swing.JFrame {
-    Driver driver;
+    private Driver driver;
     /**
      * Creates new form Login
      */
@@ -115,29 +115,9 @@ public class Signup extends javax.swing.JFrame {
         emailField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         emailField.setBorder(null);
         emailField.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        emailField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                emailFieldFocusGained(evt);
-            }
-        });
-        emailField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailFieldActionPerformed(evt);
-            }
-        });
 
         passwordField.setToolTipText("");
         passwordField.setBorder(null);
-        passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                passwordFieldFocusGained(evt);
-            }
-        });
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordFieldActionPerformed(evt);
-            }
-        });
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -164,43 +144,18 @@ public class Signup extends javax.swing.JFrame {
         namaField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         namaField.setBorder(null);
         namaField.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        namaField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                namaFieldFocusGained(evt);
-            }
-        });
-        namaField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                namaFieldActionPerformed(evt);
-            }
-        });
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
 
         alamatField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         alamatField.setBorder(null);
         alamatField.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        alamatField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                alamatFieldFocusGained(evt);
-            }
-        });
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
 
         contactField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         contactField.setBorder(null);
         contactField.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        contactField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                contactFieldFocusGained(evt);
-            }
-        });
-        contactField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contactFieldActionPerformed(evt);
-            }
-        });
 
         jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -336,16 +291,6 @@ public class Signup extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emailFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFieldFocusGained
-        // TODO add your handling code here:
-        emailField.setText("");
-    }//GEN-LAST:event_emailFieldFocusGained
-
-    private void passwordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusGained
-        // TODO add your handling code here:
-        passwordField.setText("");
-    }//GEN-LAST:event_passwordFieldFocusGained
-
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
         setButtonGroup();
         String as = signUpSebagai.getSelection().getActionCommand();
@@ -404,37 +349,9 @@ public class Signup extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_signUpButtonActionPerformed
 
-    private void namaFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namaFieldFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_namaFieldFocusGained
-
-    private void alamatFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_alamatFieldFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_alamatFieldFocusGained
-
-    private void contactFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_contactFieldFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_contactFieldFocusGained
-
     private void supplierRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplierRadioButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_supplierRadioButtonActionPerformed
-
-    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFieldActionPerformed
-
-    private void emailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailFieldActionPerformed
-
-    private void contactFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_contactFieldActionPerformed
-
-    private void namaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_namaFieldActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         this.dispose();
@@ -442,33 +359,33 @@ public class Signup extends javax.swing.JFrame {
         login.setVisible(true);
     }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private String getEmail() {
+    public String getEmail() {
         return emailField.getText();
     }
     
-    private String getPassword() {
+    public String getPassword() {
         String pass = new String(passwordField.getPassword());
         return pass;
     }
     
-    private String getNama() {
+    public String getNama() {
         return namaField.getText();
     }
     
-    private String getAlamat() {
+    public String getAlamat() {
         return alamatField.getText();
     }
     
-    private String getContact() {
+    public String getContact() {
         return contactField.getText();
     }
     
-    private void setButtonGroup() {
+    public void setButtonGroup() {
         supplierRadioButton.setActionCommand("supplier");
         penyewaRadioButton.setActionCommand("penyewa");
     }
     
-    private void reset() {
+    public void reset() {
         emailField.setText("");
         passwordField.setText("");
         namaField.setText("");
