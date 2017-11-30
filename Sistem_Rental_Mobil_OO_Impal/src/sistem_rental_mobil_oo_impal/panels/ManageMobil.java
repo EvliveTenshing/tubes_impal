@@ -184,11 +184,11 @@ public class ManageMobil extends javax.swing.JPanel {
         } else {
             Mobil mobil = getMobil(tableMobil.getSelectedRow()); //ambil data mobil dari database
             editMobil.setMobil(mobil);
-        }        
-        if ("supplier".equals(driver.getUserLevel())) {
-            editMobil.setNamaSupplierFieldNotEditable();
+            if ("supplier".equals(driver.getUserLevel())) {
+                editMobil.setNamaSupplierFieldNotEditable();
+            }
+            editMobil.setVisible(true);
         }
-        editMobil.setVisible(true);
         loadMobil();
     }//GEN-LAST:event_editMobilButtonActionPerformed
 

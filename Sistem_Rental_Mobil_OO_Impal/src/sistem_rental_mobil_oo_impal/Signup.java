@@ -321,7 +321,7 @@ public class Signup extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Formulir yang anda isi tidak lengkap");
                     }
                     else {
-                        Supplier supplier = new Supplier(getEmail(), getPassword(), getNama(), getAlamat(), getContact(), "Supplier");
+                        Supplier supplier = new Supplier(getEmail(), getPassword(), getNama(), getAlamat(), getContact(), "supplier");
                         driver.getDb().insertSupplier(supplier);
                         reset();
                         this.dispose();
@@ -333,7 +333,7 @@ public class Signup extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Formulir yang anda isi tidak lengkap");
                     }
                     else {
-                        Penyewa penyewa = new Penyewa(getEmail(), getPassword(), getNama(), getAlamat(), getContact(), "Penyewa");
+                        Penyewa penyewa = new Penyewa(getEmail(), getPassword(), getNama(), getAlamat(), getContact(), "penyewa");
                         driver.getDb().insertPenyewa(penyewa);
                         reset();
                         this.dispose();
