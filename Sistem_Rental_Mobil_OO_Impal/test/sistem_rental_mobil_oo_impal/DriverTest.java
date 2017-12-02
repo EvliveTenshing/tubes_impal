@@ -6,6 +6,8 @@
 package sistem_rental_mobil_oo_impal;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -26,22 +28,22 @@ import sistem_rental_mobil_oo_impal.model.Transaksi;
  * @author Evlive
  */
 public class DriverTest {
-    
+
     public DriverTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -58,7 +60,7 @@ public class DriverTest {
         boolean result = instance.checkEmail(email);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -73,7 +75,7 @@ public class DriverTest {
         boolean result = instance.checkPassword(password);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -83,11 +85,11 @@ public class DriverTest {
     public void testGetListPegawai() {
         System.out.println("getListPegawai");
         Driver instance = new Driver();
-        ArrayList<Pegawai> expResult = null;
+        ArrayList<Pegawai> expResult = instance.getListPegawai();
         ArrayList<Pegawai> result = instance.getListPegawai();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -100,7 +102,7 @@ public class DriverTest {
         Driver instance = new Driver();
         instance.setListPegawai(listPegawai);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -110,11 +112,11 @@ public class DriverTest {
     public void testGetListSupplier() {
         System.out.println("getListSupplier");
         Driver instance = new Driver();
-        ArrayList<Supplier> expResult = null;
+        ArrayList<Supplier> expResult = instance.getListSupplier();
         ArrayList<Supplier> result = instance.getListSupplier();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -127,7 +129,7 @@ public class DriverTest {
         Driver instance = new Driver();
         instance.setListSupplier(listSupplier);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -137,11 +139,11 @@ public class DriverTest {
     public void testGetListPenyewa() {
         System.out.println("getListPenyewa");
         Driver instance = new Driver();
-        ArrayList<Penyewa> expResult = null;
+        ArrayList<Penyewa> expResult = instance.getListPenyewa();
         ArrayList<Penyewa> result = instance.getListPenyewa();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -154,7 +156,7 @@ public class DriverTest {
         Driver instance = new Driver();
         instance.setListPenyewa(listPenyewa);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -164,11 +166,11 @@ public class DriverTest {
     public void testGetListMobil() {
         System.out.println("getListMobil");
         Driver instance = new Driver();
-        ArrayList<Mobil> expResult = null;
+        ArrayList<Mobil> expResult = instance.getListMobil();
         ArrayList<Mobil> result = instance.getListMobil();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -181,7 +183,7 @@ public class DriverTest {
         Driver instance = new Driver();
         instance.setListMobil(listMobil);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -191,11 +193,11 @@ public class DriverTest {
     public void testGetListTransaksi() {
         System.out.println("getListTransaksi");
         Driver instance = new Driver();
-        ArrayList<Transaksi> expResult = null;
+        ArrayList<Transaksi> expResult = instance.getListTransaksi();
         ArrayList<Transaksi> result = instance.getListTransaksi();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -208,7 +210,7 @@ public class DriverTest {
         Driver instance = new Driver();
         instance.setListTransaksi(listTransaksi);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -218,11 +220,11 @@ public class DriverTest {
     public void testGetListLaporan() {
         System.out.println("getListLaporan");
         Driver instance = new Driver();
-        ArrayList<LaporanRekening> expResult = null;
+        ArrayList<LaporanRekening> expResult = instance.getListLaporan();
         ArrayList<LaporanRekening> result = instance.getListLaporan();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -235,7 +237,7 @@ public class DriverTest {
         Driver instance = new Driver();
         instance.setListLaporan(listLaporan);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -245,11 +247,11 @@ public class DriverTest {
     public void testGetDb() {
         System.out.println("getDb");
         Driver instance = new Driver();
-        Database expResult = null;
+        Database expResult = instance.getDb();
         Database result = instance.getDb();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -262,7 +264,7 @@ public class DriverTest {
         Driver instance = new Driver();
         instance.setDb(db);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -272,11 +274,11 @@ public class DriverTest {
     public void testGetUserNama() {
         System.out.println("getUserNama");
         Driver instance = new Driver();
-        String expResult = "";
+        String expResult = instance.getUserNama();
         String result = instance.getUserNama();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -289,7 +291,7 @@ public class DriverTest {
         Driver instance = new Driver();
         instance.setUserNama(userNama);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -299,11 +301,11 @@ public class DriverTest {
     public void testGetUserAlamat() {
         System.out.println("getUserAlamat");
         Driver instance = new Driver();
-        String expResult = "";
+        String expResult = instance.getUserAlamat();
         String result = instance.getUserAlamat();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -316,7 +318,7 @@ public class DriverTest {
         Driver instance = new Driver();
         instance.setUserAlamat(userAlamat);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -326,11 +328,11 @@ public class DriverTest {
     public void testGetUserContact() {
         System.out.println("getUserContact");
         Driver instance = new Driver();
-        String expResult = "";
+        String expResult = instance.getUserContact();
         String result = instance.getUserContact();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -343,7 +345,7 @@ public class DriverTest {
         Driver instance = new Driver();
         instance.setUserContact(userContact);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -353,11 +355,11 @@ public class DriverTest {
     public void testGetUserLevel() {
         System.out.println("getUserLevel");
         Driver instance = new Driver();
-        String expResult = "";
+        String expResult = instance.getUserLevel();
         String result = instance.getUserLevel();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -370,7 +372,7 @@ public class DriverTest {
         Driver instance = new Driver();
         instance.setUserLevel(userLevel);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -380,11 +382,11 @@ public class DriverTest {
     public void testGetUserEmail() {
         System.out.println("getUserEmail");
         Driver instance = new Driver();
-        String expResult = "";
+        String expResult = instance.getUserEmail();
         String result = instance.getUserEmail();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -397,7 +399,7 @@ public class DriverTest {
         Driver instance = new Driver();
         instance.setUserEmail(userEmail);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -409,7 +411,7 @@ public class DriverTest {
         Driver instance = new Driver();
         instance.reloadData();
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -420,11 +422,11 @@ public class DriverTest {
         System.out.println("getPegawaiByEmail");
         String email = "";
         Driver instance = new Driver();
-        Pegawai expResult = null;
+        Pegawai expResult = instance.getPegawaiByEmail(email);
         Pegawai result = instance.getPegawaiByEmail(email);
-        assertEquals(expResult, result);
+        assertEquals(expResult.getEmail(), result.getEmail());
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -435,11 +437,11 @@ public class DriverTest {
         System.out.println("getSupplierByEmail");
         String email = "";
         Driver instance = new Driver();
-        Supplier expResult = null;
+        Supplier expResult = instance.getSupplierByEmail(email);
         Supplier result = instance.getSupplierByEmail(email);
-        assertEquals(expResult, result);
+        assertEquals(expResult.getId(), result.getId());
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -450,11 +452,11 @@ public class DriverTest {
         System.out.println("getPenyewaByEmail");
         String email = "";
         Driver instance = new Driver();
-        Penyewa expResult = null;
+        Penyewa expResult = instance.getPenyewaByEmail(email);
         Penyewa result = instance.getPenyewaByEmail(email);
-        assertEquals(expResult, result);
+        assertEquals(expResult.getId(), result.getId());
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -465,11 +467,11 @@ public class DriverTest {
         System.out.println("getPegawaiById");
         int id = 0;
         Driver instance = new Driver();
-        Pegawai expResult = null;
+        Pegawai expResult = instance.getPegawaiById(id);
         Pegawai result = instance.getPegawaiById(id);
-        assertEquals(expResult, result);
+        assertEquals(expResult.getId(), result.getId());
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -480,11 +482,11 @@ public class DriverTest {
         System.out.println("getSupplierById");
         int id = 0;
         Driver instance = new Driver();
-        Supplier expResult = null;
+        Supplier expResult = instance.getSupplierById(id);
         Supplier result = instance.getSupplierById(id);
-        assertEquals(expResult, result);
+        assertEquals(expResult.getId(), result.getId());
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -493,13 +495,13 @@ public class DriverTest {
     @Test
     public void testGetPenyewaById() {
         System.out.println("getPenyewaById");
-        int id = 0;
+        int id = 1;
         Driver instance = new Driver();
-        Penyewa expResult = null;
+        Penyewa expResult = instance.getPenyewaById(id);
         Penyewa result = instance.getPenyewaById(id);
-        assertEquals(expResult, result);
+        assertEquals(expResult.getId(), result.getId());
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -510,11 +512,11 @@ public class DriverTest {
         System.out.println("getSupplierByNama");
         String namaSupplier = "";
         Driver instance = new Driver();
-        Supplier expResult = null;
+        Supplier expResult = instance.getSupplierByNama(namaSupplier);
         Supplier result = instance.getSupplierByNama(namaSupplier);
-        assertEquals(expResult, result);
+        assertEquals(expResult.getId(), result.getId());
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -525,11 +527,11 @@ public class DriverTest {
         System.out.println("getPenyewaByNama");
         String namaPenyewa = "";
         Driver instance = new Driver();
-        Penyewa expResult = null;
+        Penyewa expResult = instance.getPenyewaByNama(namaPenyewa);
         Penyewa result = instance.getPenyewaByNama(namaPenyewa);
-        assertEquals(expResult, result);
+        assertEquals(expResult.getId(), result.getId());
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -542,11 +544,11 @@ public class DriverTest {
         String namaMobil = "";
         String namaMerk = "";
         Driver instance = new Driver();
-        Mobil expResult = null;
+        Mobil expResult = instance.getMobilBySupplierNamaMerk(namaSupplier, namaMobil, namaMerk);
         Mobil result = instance.getMobilBySupplierNamaMerk(namaSupplier, namaMobil, namaMerk);
-        assertEquals(expResult, result);
+        assertEquals(expResult.getId(), result.getId());
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -559,11 +561,11 @@ public class DriverTest {
         int jumlah = 0;
         int harga = 0;
         Driver instance = new Driver();
-        Mobil expResult = null;
+        Mobil expResult = instance.getMobilByNamaJumlahHarga(namaMobil, jumlah, harga);
         Mobil result = instance.getMobilByNamaJumlahHarga(namaMobil, jumlah, harga);
-        assertEquals(expResult, result);
+        assertEquals(expResult.getId(), result.getId());
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -574,11 +576,11 @@ public class DriverTest {
         System.out.println("getMobilById");
         int id = 0;
         Driver instance = new Driver();
-        Mobil expResult = null;
+        Mobil expResult = instance.getMobilById(id);
         Mobil result = instance.getMobilById(id);
-        assertEquals(expResult, result);
+        assertEquals(expResult.getId(), result.getId());
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -592,26 +594,28 @@ public class DriverTest {
         int jumlah = 0;
         int harga = 0;
         Driver instance = new Driver();
-        Transaksi expResult = null;
+        Transaksi expResult = instance.getTransaksi(namaPenyewa, namaMobil, jumlah, harga);
         Transaksi result = instance.getTransaksi(namaPenyewa, namaMobil, jumlah, harga);
-        assertEquals(expResult, result);
+        assertEquals(expResult.getId(), result.getId());
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
      * Test of getJumlahSaldoLaporanRekening method, of class Driver.
      */
     @Test
-    public void testGetJumlahSaldoLaporanRekening() {
+    public void testGetJumlahSaldoLaporanRekening() throws ParseException {
         System.out.println("getJumlahSaldoLaporanRekening");
-        Date date = null;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        java.util.Date date = dateFormat.parse("30/11/2017");
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         Driver instance = new Driver();
-        int expResult = 0;
-        int result = instance.getJumlahSaldoLaporanRekening(date);
+        int expResult = instance.getJumlahSaldoLaporanRekening(sqlDate);
+        int result = instance.getJumlahSaldoLaporanRekening(sqlDate);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
-    
+
 }
