@@ -184,13 +184,11 @@ public class EditTransaksi extends javax.swing.JFrame {
         setButtonGroup();
         String statusBayar = statusBayarButtonGroup.getSelection().getActionCommand();
         int denda = getDenda();
-        if (denda != 0) {
-            if (denda < 0) {
-                JOptionPane.showMessageDialog(null, "Denda tidak bisa negatif");
-            } else {
-                transaksi.setDenda(denda);
-                driver.getDb().updateTransaksi(transaksi.getId(), transaksi);
-            }
+        if (denda < 0) {
+            JOptionPane.showMessageDialog(null, "Denda tidak bisa negatif");
+        } else {
+            transaksi.setDenda(denda);
+            driver.getDb().updateTransaksi(transaksi.getId(), transaksi);
         }
         if ("Sudah bayar".equals(statusBayar)) {
             transaksi.setStatusBayar(1);

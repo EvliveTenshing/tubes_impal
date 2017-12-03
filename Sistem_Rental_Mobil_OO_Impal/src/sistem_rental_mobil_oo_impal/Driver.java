@@ -349,8 +349,10 @@ public class Driver {
             String tanggalTransaksi = dateFormat.format(p.getTanggalPengembalian());
             String tanggalLaporan = dateFormat.format(date);
             if (tanggalTransaksi.equals(tanggalLaporan)) {
-                int harga = p.getJumlahMobil()*p.getHarga();
-                jumlah = jumlah + harga + p.getDenda();
+                if (p.getStatusBayar() == 1) {
+                    int harga = p.getJumlahMobil() * p.getHarga();
+                    jumlah = jumlah + harga + p.getDenda();
+                }
             }
         }
         return jumlah;
